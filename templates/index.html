@@ -1,1 +1,88 @@
+{% extends "layout.html" %}
 
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Symbols</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in database %}
+                <tr>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>{{ row["price"] }}</td>
+                    <td>{{ '%0.2f'|format(row["price"] * row["shares"]) }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <!-- Google Chart will be rendered here -->
+                        <div id="chart_{{ row["symbol"] }}" class="chart-container" style="width: 100%;"></div></div>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th scope='row' colspan='3'> Remaining Cash </th>
+                <td> {{cash}} </td>
+            </tr>
+            <tr>
+                <th scope='row' colspan='3'> TOTAL BALANCE </th>
+                <td> {{total}} </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            console.log("Drawing charts...");
+
+            {% for symbol, url in chart_data.items() %} 
+                fetch("{{ url }}")
+                    .then(response => response.json())
+                    .then(chartData => {
+                        console.log("Fetched chart data:", chartData);
+                        createChart("{{ symbol }}", chartData);
+                    })
+                    .catch(error => console.error("Error fetching chart data:", error));
+            {% endfor %}
+        }
+
+        // Create Google Chart using the fetched data
+        function createChart(symbol, chartData) {
+            console.log("Creating chart for", symbol);
+            var data = new google.visualization.DataTable();
+            data.addColumn('datetime', 'Timestamp');
+            data.addColumn('number', 'Price');
+
+            chartData.forEach(entry => {
+                data.addRow([new Date(entry.timestamp * 1000), entry.price]);
+            });
+
+            var options = {
+                title: symbol + ' Stock Price',
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                chartArea: { width: '80%', height: '70%' } // Adjust dimensions as needed
+
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById("chart_" + symbol));
+            chart.draw(data, options);
+        }
+    </script>
+{% endblock %}

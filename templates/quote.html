@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+    {% if name and usd  %}
+    <p>
+        a single share of {{ name }} costs {{usd}}
+    </p>
+    {% endif %}
+{% endblock %}
