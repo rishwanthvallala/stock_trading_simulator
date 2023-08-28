@@ -94,7 +94,7 @@ def index():
 @login_required
 def chart_data(symbol):
     """Retrieve historical price data for a stock"""
-    api_key = 'cji82upr01qonds7l9hgcji82upr01qonds7l9i0'  # Replace with your Finnhub API key
+    api_key = 'YOUR API KEY'  # Replace with your Finnhub API key
     
     try:
 #        Calculate the timestamps for the past day
