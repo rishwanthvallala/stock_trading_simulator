@@ -1,0 +1,70 @@
+/* Dark mode styling */
+body {
+    background-color: #212529;
+    color: white;
+}
+
+/* Colors for brand */
+nav .navbar-brand {
+    font-size: xx-large;
+}
+
+nav .navbar-brand .blue {
+    color: #537fbe;
+}
+
+nav .navbar-brand .red {
+    color: #ea433b;
+}
+
+nav .navbar-brand .yellow {
+    color: #f5b82e;
+}
+
+nav .navbar-brand .green {
+    color: #2e944b;
+}
+
+
+/* Adjust text color for specific elements */
+.navbar-light .navbar-nav .nav-link {
+    color: #f5b82e;
+    transition: color 0.3s; /* Add a smooth transition effect */
+}
+
+/* Change color to white on hover */
+.navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+}
+
+#button2 {
+    color: #f5b82e;
+}
+
+/* Adjust text color for specific elements */
+.table thead th,
+.table tbody td {
+    color: white !important;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+    color: white !important;
+}
+
+.form-control {
+    background-color: #212529;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: #cccccc;
+    color: black;
+}
+.table tbody tr:nth-last-child(2) th,
+.table tbody tr:nth-last-child(2) td {
+    color: white !important;
+}
+.chart-container {
+    max-width: 500px; /* Adjust this value as needed */
+}
