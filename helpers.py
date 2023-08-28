@@ -67,7 +67,7 @@ def lookup(symbol):
             return name, price
 
         # usage
-        api_key = 'cji82upr01qonds7l9hgcji82upr01qonds7l9i0'  # replace with your Finnhub API key
+        api_key = 'YOUR API KEY'  # replace with your Finnhub API key
         name, price = get_current_price(symbol, api_key) 
         return {
             "name": name,
@@ -79,7 +79,7 @@ def lookup(symbol):
 
 def chart_data_lookup(symbol='AAPL'):
     # Retrieve the historical price data from the Alpha Vantage API
-    api_key = 'XJPS2APPCEM1DLFL'
+    api_key = 'YOUR API KEY'
     ts = TimeSeries(key=api_key)
     data, _ = ts.get_daily(symbol=symbol, outputsize='full') # type: ignore
 
