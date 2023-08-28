@@ -26,7 +26,7 @@ Check out the live demo of the Stock Trading Simulator app [here](https://rishwa
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/stock-trading-simulator.git
+   git clone https://github.com/rishwanthvallala/stock-trading-simulator.git
    cd stock-trading-simulator
    ```
 
