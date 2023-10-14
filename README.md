@@ -10,9 +10,7 @@ Welcome to the Stock Trading Simulator app! This project is a basic stock tradin
 - Portfolio history: Users can view their trading history, including the stocks they've bought and sold.
 - Real-time charting: The app provides a basic chart displaying historical closing prices of a selected stock.
 
-## Live Demo
 
-Check out the live demo of the Stock Trading Simulator app [here](https://rishwanthvallala.pythonanywhere.com/login).
 
 ## Tech Stack
 
